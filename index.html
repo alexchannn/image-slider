@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Image Slider</title>
+      <style type="text/css">
+         body {
+            background-color: #bae6fd;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%); /* the worst way to center item */
+         }
+
+         .slider {
+            position: absolute;
+            -webkit-appearance: none;
+            background: none;
+            width: 820px;
+            height: 450px;
+            z-index: 100;
+            margin-left: -10px;
+         }
+
+         .slider::-webkit-slider-thumb {
+            width: 20px;
+            -webkit-appearance: none;
+            height: 20px;
+            cursor: ew-resize;
+            background-color: white;
+            border-radius: 50%;
+         }
+
+         #grayScale {
+            position: absolute;
+            width: 400px;
+            overflow: hidden;
+            border-right: solid 2px white;
+         }
+
+         #grayScale img {
+            filter: grayscale();
+         }
+      </style>
+   </head>
+   <body>
+      <input type="range" class="slider" oninput="checkGray(this);" />
+      <div id="grayScale">
+         <img src="img.png" alt="image" width="800px" />
+      </div>
+      <img src="img.png" alt="image" width="800px" />
+
+      <script type="text/javascript">
+         function checkGray(el) {
+            document.getElementById("grayScale").style.width = (el.value / 100) * 800 + "px";
+         }
+      </script>
+   </body>
+</html>
